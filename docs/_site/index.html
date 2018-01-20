@@ -46,6 +46,7 @@
 
 	     map.data.setStyle(function(feature) {
 		 return {
+		     visible: feature.getProperty('visible'),
 	 	     strokeColor: feature.getProperty('color'),
 	 	     strokeOpacity: 0.8,
 	 	     strokeWeight: 2,

@@ -1,6 +1,7 @@
 { "type": "Feature",
   "properties": {
-      "color": "purple"
+      "color": "purple",
+      "visible": false
   },
   "geometry": {
       "type": "Polygon",

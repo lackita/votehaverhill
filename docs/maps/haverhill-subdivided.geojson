@@ -2,12 +2,14 @@
     "type": "FeatureCollection",
     "name": "haverhill-subdivided",
     "properties": {
+	"visible": true,
 	"color": "green"
     },
     "features": [
         {
             "type": "Feature",
             "properties": {
+		"visible": true,
 		"color": "green"
             },
             "geometry": {
@@ -283,6 +285,7 @@
         {
             "type": "Feature",
             "properties": {
+		"visible": true,
 		"color": "green"
             },
             "geometry": {
@@ -1090,6 +1093,7 @@
         {
             "type": "Feature",
             "properties": {
+		"visible": true,
 		"color": "green"
             },
             "geometry": {
@@ -1749,6 +1753,7 @@
         {
             "type": "Feature",
             "properties": {
+		"visible": true,
 		"color": "green"
             },
             "geometry": {
