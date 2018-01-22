@@ -10,7 +10,8 @@
             "type": "Feature",
             "properties": {
 		"visible": true,
-		"color": "green"
+		"color": "green",
+		"NAME": "14th Essex"
             },
             "geometry": {
                 "type": "MultiPolygon",
@@ -1094,7 +1095,8 @@
             "type": "Feature",
             "properties": {
 		"visible": true,
-		"color": "green"
+		"color": "green",
+                "NAME": "15th Essex"
             },
             "geometry": {
                 "type": "MultiPolygon",
@@ -1754,6 +1756,7 @@
             "type": "Feature",
             "properties": {
 		"visible": true,
+                "NAME": "2nd Essex",
 		"color": "green"
             },
             "geometry": {

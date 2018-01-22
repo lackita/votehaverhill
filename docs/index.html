@@ -33,7 +33,7 @@
     <body>
 	<div id="map"></div>
 	<script>
-	 var map, ctaLayer, haverhill;
+	 var map, visibility;
 	 function initMap() {
              map = new google.maps.Map(document.getElementById('map'), {
 		 center: {lat: 42.7822906, lng: -71.0782041},
@@ -42,9 +42,15 @@
 
 	     map.data.loadGeoJson("maps/haverhill-subdivided.geojson");
 
-	     map.data.loadGeoJson("maps/lower_legislative_districts.json");
+	     map.data.loadGeoJson("maps/haverhill-lower-legislative.geojson");
 
+	     visibility = {};
 	     map.data.setStyle(function(feature) {
+		 name = feature.getProperty("NAME");
+		 if (name) {
+		     if (!visibility[name]) visibility[name] = {};
+		     visibility[name][feature.getProperty("visible")] = feature;
+		 }
 		 return {
 		     visible: feature.getProperty('visible'),
 	 	     strokeColor: feature.getProperty('color'),
@@ -54,6 +60,17 @@
 	 	     fillOpacity: 0.1
 		 };
 	     });
+
+	     map.data.addListener("click", showDistrict);
+	 }
+
+	 function showDistrict(e) {
+	     let features = visibility[e.feature.getProperty("NAME")];
+	     if (features) {
+		 let mode = e.feature.getProperty("visible");
+		 features[false].setProperty("visible", mode);
+		 features[true].setProperty("visible", !mode);
+	     }
 	 }
 	</script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz-5FaAktvEXDlwQZIkbfF1N6i0W9cmFo&callback=initMap" async defer></script>
