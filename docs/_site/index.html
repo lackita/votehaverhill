@@ -1,21 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
 	<title>Vote Haverhill</title>
-	<meta name="viewport" content="initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta charset="utf-8">
 
 	<style>
 	 /* Always set the map height explicitly to define the size of the div
 	  * element that contains the map. */
 	 #map {
-             height: 100%;
+	     height: 100%;
 	 }
 	 /* Optional: Makes the sample page fill the window. */
 	 html, body {
-             height: 100%;
-             margin: 0;
-             padding: 0;
+	     height: 100%;
+	     margin: 0;
+	     padding: 0;
+	 }
+
+	 nav ul {
+	     display: flex;
+	     align-items: stretch;
+	     justify-content: space-between;
+	     width: 100%;
+	     margin: 0;
+	     padding: 0;
+	 }
+
+	 nav li {
+	     width: 100%;
+	     display: block;
+	     flex: 0 1 auto;
+	     list-style-type: none;
+	     text-align: center;
+	     padding: 10px;
+	 }
+
+	 .state {
+	     background-color: #2e8540;
+	 }
+
+	 .senate {
+	     background-color: #cd2026;
+	 }
+
+	 .house {
+	     background-color: #205493;
+	 }
+
+	 .active {
+	     border-bottom: 5px solid black;
+	 }
+
+	 nav a {
+	     text-decoration: none;
+	     color: white;
 	 }
 	</style>
 
@@ -31,6 +70,13 @@
     </head>
 
     <body>
+	<nav>
+	    <ul>
+		<li class="state active"><a class="nav-link" href="#">State</a></li>
+		<li class="senate"><a class="nav-link" href="#">Senate</a></li>
+		<li class="house"><a class="nav-link" href="#">House</a></li>
+	    </ul>
+	</nav>
 	<div id="map"></div>
 	<script>
 	 var map, visibility;
