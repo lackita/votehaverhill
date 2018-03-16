@@ -1,125 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-	<title>Vote Haverhill</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta charset="utf-8">
+  <head>
+    <title>Vote Haverhill</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
 
-	<style>
-	 /* Always set the map height explicitly to define the size of the div
-	  * element that contains the map. */
-	 #map {
-	     height: 100%;
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112036985-1"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-112036985-1');
+    </script>
+  </head>
+
+  <body>
+    <div class="section">
+      <nav>
+	<ul>
+	  <li class="active map"><a class="nav-link" href="/">Precinct Map</a></li>
+	  <li class="questions"><a class="nav-link" href="/questions.html">Ballot Questions</a></li>
+	  <li class="executives"><a class="nav-link" href="/executives.html">State Executives</a></li>
+	  <li class="legislature"><a class="nav-link" href="/legislature.html">State Legislature</a></li>
+	  <li class="congress"><a class="nav-link" href="/congress.html">U.S. Congress</a></li>
+	</ul>
+      </nav>
+      <div id="map"></div>
+<script>
+ var map, visibility;
+ function initMap() {
+     map = new google.maps.Map(document.getElementById('map'), {
+	 center: {lat: 42.7822906, lng: -71.0782041},
+	 zoom: 12
+     });
+
+     map.data.loadGeoJson("maps/haverhill-vtds.geojson");
+     /* map.data.loadGeoJson("maps/haverhill-subdivided.geojson");
+
+	map.data.loadGeoJson("maps/haverhill-lower-legislative.geojson");*/
+
+     visibility = {};
+     map.data.setStyle(function(feature) {
+	 name = feature.getProperty("NAME");
+	 if (name) {
+	     if (!visibility[name]) visibility[name] = {};
+	     visibility[name][feature.getProperty("visible")] = feature;
 	 }
-	 /* Optional: Makes the sample page fill the window. */
-	 html, body {
-	     height: 100%;
-	     margin: 0;
-	     padding: 0;
-	 }
+	 return {
+	     visible: feature.getProperty('visible'),
+	     strokeColor: feature.getProperty('color'),
+	     strokeOpacity: 0.8,
+	     strokeWeight: 2,
+	     fillColor: feature.getProperty('color'),
+	     fillOpacity: 0.1
+	 };
+     });
 
-	 nav ul {
-	     display: flex;
-	     align-items: stretch;
-	     justify-content: space-between;
-	     width: 100%;
-	     margin: 0;
-	     padding: 0;
-	 }
+     map.data.addListener("click", showDistrict);
+ }
 
-	 nav li {
-	     width: 100%;
-	     display: block;
-	     flex: 0 1 auto;
-	     list-style-type: none;
-	     text-align: center;
-	     padding: 10px;
-	 }
+ function showDistrict(e) {
+     let features = visibility[e.feature.getProperty("NAME")];
+     if (features) {
+	 let mode = e.feature.getProperty("visible");
+	 features[false].setProperty("visible", mode);
+	 features[true].setProperty("visible", !mode);
+     }
+ }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz-5FaAktvEXDlwQZIkbfF1N6i0W9cmFo&callback=initMap" async defer></script>
 
-	 .state {
-	     background-color: #2e8540;
-	 }
-
-	 .senate {
-	     background-color: #cd2026;
-	 }
-
-	 .house {
-	     background-color: #205493;
-	 }
-
-	 .active {
-	     border-bottom: 5px solid black;
-	 }
-
-	 nav a {
-	     text-decoration: none;
-	     color: white;
-	 }
-	</style>
-
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112036985-1"></script>
-	<script>
-	 window.dataLayer = window.dataLayer || [];
-	 function gtag(){dataLayer.push(arguments);}
-	 gtag('js', new Date());
-
-	 gtag('config', 'UA-112036985-1');
-	</script>
-    </head>
-
-    <body>
-	<nav>
-	    <ul>
-		<li class="state active"><a class="nav-link" href="#">State</a></li>
-		<li class="senate"><a class="nav-link" href="#">Senate</a></li>
-		<li class="house"><a class="nav-link" href="#">House</a></li>
-	    </ul>
-	</nav>
-	<div id="map"></div>
-	<script>
-	 var map, visibility;
-	 function initMap() {
-             map = new google.maps.Map(document.getElementById('map'), {
-		 center: {lat: 42.7822906, lng: -71.0782041},
-		 zoom: 12
-             });
-
-	     map.data.loadGeoJson("maps/haverhill-vtds.geojson");
-	     /* map.data.loadGeoJson("maps/haverhill-subdivided.geojson");
-
-		map.data.loadGeoJson("maps/haverhill-lower-legislative.geojson");*/
-
-	     visibility = {};
-	     map.data.setStyle(function(feature) {
-		 name = feature.getProperty("NAME");
-		 if (name) {
-		     if (!visibility[name]) visibility[name] = {};
-		     visibility[name][feature.getProperty("visible")] = feature;
-		 }
-		 return {
-		     visible: feature.getProperty('visible'),
-	 	     strokeColor: feature.getProperty('color'),
-	 	     strokeOpacity: 0.8,
-	 	     strokeWeight: 2,
-	 	     fillColor: feature.getProperty('color'),
-	 	     fillOpacity: 0.1
-		 };
-	     });
-
-	     map.data.addListener("click", showDistrict);
-	 }
-
-	 function showDistrict(e) {
-	     let features = visibility[e.feature.getProperty("NAME")];
-	     if (features) {
-		 let mode = e.feature.getProperty("visible");
-		 features[false].setProperty("visible", mode);
-		 features[true].setProperty("visible", !mode);
-	     }
-	 }
-	</script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz-5FaAktvEXDlwQZIkbfF1N6i0W9cmFo&callback=initMap" async defer></script>
-    </body>
+    </div>
+  </body>
 </html>

@@ -1,0 +1,65 @@
+.section {
+    display: flex;
+    flex-flow: column;
+    align-items: stretch;
+    height: 100%;
+}
+
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+    flex: 1 1 auto;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    width: 100%;
+    display: block;
+    flex: 0 1 auto;
+    list-style-type: none;
+    text-align: center;
+    padding: 10px;
+}
+
+.map {
+    background-color: #494440;
+}
+
+.questions {
+    background-color: #2e8540;
+}
+
+.executives {
+    background-color: #fdb81e;
+}
+
+.congress {
+    background-color: #cd2026;
+}
+
+.legislature {
+    background-color: #205493;
+}
+
+.active {
+    border-bottom: 5px solid black;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+}
