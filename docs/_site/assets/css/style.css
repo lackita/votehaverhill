@@ -15,6 +15,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: Merriweather;
 }
 
 nav ul {
@@ -37,22 +38,27 @@ nav li {
 
 .map {
     background-color: #494440;
+    color: white;
 }
 
 .questions {
     background-color: #2e8540;
+    color: white;
 }
 
 .executives {
     background-color: #fdb81e;
+    color: white;
 }
 
 .congress {
     background-color: #cd2026;
+    color: white;
 }
 
 .legislature {
     background-color: #205493;
+    color: white;
 }
 
 .active {
@@ -62,4 +68,24 @@ nav li {
 nav a {
     text-decoration: none;
     color: white;
+}
+
+.content { width: 100% }
+
+.card {
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    margin: 10px;
+}
+
+.card h3 {
+    margin: 0;
+    padding: 5px;
+    background-color: 
+}
+
+.card dl {
+    margin: 0;
+    padding: 10px;
 }
