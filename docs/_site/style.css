@@ -41,23 +41,23 @@ nav li {
     color: white;
 }
 
-.questions {
+.statewide {
     background-color: #2e8540;
     color: white;
 }
 
-.executives {
+.state-senate {
+    background-color: #205493;
+    color: white;
+}
+
+.state-house {
     background-color: #fdb81e;
     color: white;
 }
 
 .congress {
     background-color: #cd2026;
-    color: white;
-}
-
-.legislature {
-    background-color: #205493;
     color: white;
 }
 
