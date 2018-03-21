@@ -11,6 +11,8 @@ layout: null
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather" />
     <link rel="stylesheet" type="text/css" href="style.css">
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112036985-1"></script>
     <script>
@@ -19,6 +21,27 @@ layout: null
      gtag('js', new Date());
 
      gtag('config', 'UA-112036985-1');
+
+     function collapse_all() {
+	 $(".octicon-triangle-right").show();
+	 $(".octicon-triangle-left").hide();
+	 $(".collapsible").hide();
+     }
+
+     $(document).ready(() => {
+	 collapse_all();
+	 
+	 $(".expandable").click(e => {
+	     let link = $(e.currentTarget);
+	     let section = link.data("section");
+	     $("." + section + ".collapsible").toggle();
+	     link.children("svg").toggle();
+	 });
+
+	 {% if page.section %}
+	 $(".{{ page.section }} a.expandable").click();
+	 {% endif %}
+     });
     </script>
   </head>
 
@@ -27,10 +50,14 @@ layout: null
       <nav>
 	<ul>
 	  <li class="{% if page.tab == "map" %}active {% endif %}map"><a class="nav-link" href="/">Precinct Map</a></li>
-	  <li class="{% if page.tab == "statewide" %}active {% endif %}statewide"><a class="nav-link" href="/statewide.html">Statewide</a></li>
-	  <li class="{% if page.tab == "state-senate" %}active {% endif %}state-senate"><a class="nav-link" href="/state-senate.html">State Senate</a></li>
-	  <li class="{% if page.tab == "state-house" %}active {% endif %}state-house"><a class="nav-link" href="/state-house.html">State House</a></li>
-	  <li class="{% if page.tab == "congress" %}active {% endif %}congress"><a class="nav-link" href="/congress.html">U.S. Congress</a></li>
+	  <li class="{% if page.section == "state" %}active {% endif %}state"><a data-section="state" class="nav-link expandable" href="#">State {% octicon triangle-right %}{% octicon triangle-left %}</a></li>
+	  <li class="{% if page.tab == "questions" %}active {% endif %}state collapsible"><a class="nav-link" href="questions.html">Questions</a></li>
+	  <li class="{% if page.tab == "executives" %}active {% endif %}state collapsible"><a class="nav-link" href="executives.html">Executives</a></li>
+	  <li class="{% if page.tab == "state-senate" %}active {% endif %}state collapsible"><a class="nav-link" href="state-senate.html">Senate</a></li>
+	  <li class="{% if page.tab == "state-house" %}active {% endif %}state collapsible"><a class="nav-link" href="state-house.html">House</a></li>
+	  <li class="{% if page.section == "nation" %}active {% endif %}nation"><a data-section="nation" class="nav-link expandable" href="#">Nation {% octicon triangle-right %}{% octicon triangle-left %}</a></li>
+	  <li class="{% if page.tab == "us-senate" %}active {% endif %}nation collapsible"><a class="nav-link" href="us-senate.html">Senate</a></li>
+	  <li class="{% if page.tab == "us-house" %}active {% endif %}nation collapsible"><a class="nav-link" href="us-house.html">House</a></li>
 	</ul>
       </nav>
 

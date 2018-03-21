@@ -3,3 +3,4 @@ ruby "2.3.3"
 
 gem "httparty"
 gem "jekyll"
+gem "jekyll-octicons"

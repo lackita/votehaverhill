@@ -41,24 +41,27 @@ nav li {
     color: white;
 }
 
-.statewide {
-    background-color: #2e8540;
-    color: white;
-}
-
-.state-senate {
+.state {
     background-color: #205493;
     color: white;
 }
 
+.state.collapsible {
+    background-color: #4773aa;
+}
+
 .state-house {
-    background-color: #fdb81e;
+    background-color: #4c2c92;
     color: white;
 }
 
-.congress {
-    background-color: #cd2026;
+.nation {
+    background-color: #981b1e;
     color: white;
+}
+
+.nation.collapsible {
+    background-color: #cd2026;
 }
 
 .active {
@@ -88,4 +91,9 @@ nav a {
 .card dl {
     margin: 0;
     padding: 10px;
+}
+
+.octicon-triangle-right, .octicon-triangle-left {
+    position: relative;
+    top: 2px;
 }

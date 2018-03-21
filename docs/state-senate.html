@@ -1,34 +1,13 @@
 ---
 layout: page
+section: state
 tab: state-senate
 ---
 
-<div id="map"></div>
-<script>
- var map, visibility;
- function initMap() {
-     map = new google.maps.Map(document.getElementById('map'), {
-	 center: {lat: 42.7822906, lng: -71.0782041},
-	 zoom: 12
-     });
-
-     map.data.loadGeoJson("maps/upper-legislative.geojson");
-
-     map.data.setStyle(function(feature) {
-	 return {
-	     strokeColor: feature.getProperty('color'),
-	     strokeOpacity: 0.8,
-	     strokeWeight: 2,
-	     fillColor: feature.getProperty('color'),
-	     fillOpacity: 0.1
-	 };
-     });
- }
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz-5FaAktvEXDlwQZIkbfF1N6i0W9cmFo&callback=initMap" async defer></script>
+{% include map.html map="upper-legislative.geojson" %}
 
 <div class="card">
-  <h3 class="state-senate">Incumbent</h3>
+  <h3 class="state">Incumbent</h3>
   <dl>
     <dt>Bruce Tarr</dt>
   </dl>
