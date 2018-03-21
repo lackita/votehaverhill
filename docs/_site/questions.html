@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Vote Haverhill</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112036985-1"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-112036985-1');
+
+     function collapse_all() {
+	 $(".octicon-triangle-right").show();
+	 $(".octicon-triangle-left").hide();
+	 $(".collapsible").hide();
+     }
+
+     $(document).ready(() => {
+	 collapse_all();
+	 
+	 $(".expandable").click(e => {
+	     let link = $(e.currentTarget);
+	     let section = link.data("section");
+	     $("." + section + ".collapsible").toggle();
+	     link.children("svg").toggle();
+	 });
+
+	 
+	 $(".state a.expandable").click();
+	 
+     });
+    </script>
+  </head>
+
+  <body>
+    <div class="section">
+      <nav>
+	<ul>
+	  <li class="map"><a class="nav-link" href="/">Precinct Map</a></li>
+	  <li class="active state"><a data-section="state" class="nav-link expandable" href="#">State <svg class="octicon octicon-triangle-right" viewBox="0 0 6 16" version="1.1" width="6" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M0 14l6-6-6-6z"/></svg><svg class="octicon octicon-triangle-left" viewBox="0 0 6 16" version="1.1" width="6" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6 2L0 8l6 6z"/></svg></a></li>
+	  <li class="active state collapsible"><a class="nav-link" href="questions.html">Questions</a></li>
+	  <li class="state collapsible"><a class="nav-link" href="executives.html">Executives</a></li>
+	  <li class="state collapsible"><a class="nav-link" href="state-senate.html">Senate</a></li>
+	  <li class="state collapsible"><a class="nav-link" href="state-house.html">House</a></li>
+	  <li class="nation"><a data-section="nation" class="nav-link expandable" href="#">Nation <svg class="octicon octicon-triangle-right" viewBox="0 0 6 16" version="1.1" width="6" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M0 14l6-6-6-6z"/></svg><svg class="octicon octicon-triangle-left" viewBox="0 0 6 16" version="1.1" width="6" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6 2L0 8l6 6z"/></svg></a></li>
+	  <li class="nation collapsible"><a class="nav-link" href="us-senate.html">Senate</a></li>
+	  <li class="nation collapsible"><a class="nav-link" href="us-house.html">House</a></li>
+	</ul>
+      </nav>
+
+      <div class="card">
+  <h3 class="state">On Ballot</h3>
+  <dl>
+    <dt>Income Tax for Education and Transportation Amendment</dt>
+    <dt>Gender Identity Anti-Discrimination</dt>
+  </dl>
+</div>
+
+<div class="card">
+  <h3 class="state">Potential Measures</h3>
+  <dl>
+    <dt>Advisory Commission for Amending U.S. Constitution about Political Spending and Corporate Personhood</dt>
+    <dt>Nurse-Patient Assignment Limits Initiative</dt>
+    <dt>$15 Minimum Wage Initiative</dt>
+    <dt>Paid Family and Medical Leave Initiative</dt>
+    <dt>Sales Tax Decrease and Tax-Free Weekend Initiative</dt>
+  </dl>
+</div>
+
+    </div>
+  </body>
+</html>
