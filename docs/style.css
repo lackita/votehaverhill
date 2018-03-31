@@ -97,3 +97,10 @@ nav a {
     position: relative;
     top: 2px;
 }
+
+#where-do-i-vote {
+    margin: 10px;
+    padding: 5px;
+    font-size: 18px;
+    width: 50%;
+}

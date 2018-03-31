@@ -66,15 +66,38 @@
       </nav>
 
       <div id="map"></div>
+<input id="where-do-i-vote" placeholder="Where Do I Vote?" />
 <script>
  var map, visibility;
  function initMap() {
      map = new google.maps.Map(document.getElementById('map'), {
 	 center: {lat: 42.7822906, lng: -71.0782041},
-	 zoom: 12
+	 zoom: 12,
+	 disableDefaultUI: true,
+	 zoomControl: true
      });
 
      map.data.loadGeoJson("maps/lower-legislative.geojson");
+
+     // Create the search box and link it to the UI element.
+     var input = document.getElementById("where-do-i-vote");
+     var searchBox = new google.maps.places.SearchBox(input);
+     searchBox.addListener("places_changed", function () {
+	 let markers = [];
+	 searchBox.getPlaces().forEach(function (place) {
+	     markers.push(new google.maps.Marker({
+		 map: map,
+		 icon: { url: place.icon,
+			 size: new google.maps.Size(71, 71),
+			 origin: new google.maps.Point(0, 0),
+			 anchor: new google.maps.Point(17, 34),
+			 scaledSize: new google.maps.Size(25, 25) },
+		 title: place.name,
+		 position: place.geometry.location
+	     }));
+	 });
+     });
+     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
      map.data.setStyle(function(feature) {
 	 return {
@@ -87,7 +110,7 @@
      });
  }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz-5FaAktvEXDlwQZIkbfF1N6i0W9cmFo&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz-5FaAktvEXDlwQZIkbfF1N6i0W9cmFo&libraries=places&callback=initMap" async defer></script>
 
 
 <div class="card">
