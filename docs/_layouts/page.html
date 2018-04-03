@@ -56,15 +56,8 @@ layout: null
     <div class="section">
       <nav>
 	<ul>
-	  <li class="{% if page.tab == "map" %}active {% endif %}map"><a class="nav-link" href="/">Precinct Map</a></li>
-	  <li class="{% if page.section == "state" %}active {% endif %}state"><a data-section="state" class="nav-link expandable" href="#">State {% octicon triangle-right %}{% octicon triangle-left %}</a></li>
-	  <li class="{% if page.tab == "questions" %}active {% endif %}state collapsible"><a class="nav-link" href="questions.html">Questions</a></li>
-	  <li class="{% if page.tab == "executives" %}active {% endif %}state collapsible"><a class="nav-link" href="executives.html">Executives</a></li>
-	  <li class="{% if page.tab == "state-senate" %}active {% endif %}state collapsible"><a class="nav-link" href="state-senate.html">Senate</a></li>
-	  <li class="{% if page.tab == "state-house" %}active {% endif %}state collapsible"><a class="nav-link" href="state-house.html">House</a></li>
-	  <li class="{% if page.section == "nation" %}active {% endif %}nation"><a data-section="nation" class="nav-link expandable" href="#">Nation {% octicon triangle-right %}{% octicon triangle-left %}</a></li>
-	  <li class="{% if page.tab == "us-senate" %}active {% endif %}nation collapsible"><a class="nav-link" href="us-senate.html">Senate</a></li>
-	  <li class="{% if page.tab == "us-house" %}active {% endif %}nation collapsible"><a class="nav-link" href="us-house.html">House</a></li>
+	  <li class="{% if page.tab == "where" %}active {% endif %}blue"><a class="nav-link" href="/">Where Do I Vote?</a></li>
+	  <li class="{% if page.tab == "who" %}active {% endif %}red"><a class="nav-link" href="/who.html">Who's On My Ballot?</a></li>
 	</ul>
       </nav>
 

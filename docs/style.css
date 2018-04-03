@@ -36,31 +36,31 @@ nav li {
     padding: 10px;
 }
 
-.map {
+.black {
     background-color: #494440;
     color: white;
 }
 
-.state {
+.blue {
     background-color: #205493;
     color: white;
 }
 
-.state.collapsible {
+.blue.collapsible {
     background-color: #4773aa;
 }
 
-.state-house {
-    background-color: #4c2c92;
-    color: white;
-}
+/* .state-house {
+   background-color: #4c2c92;
+   color: white;
+   } */
 
-.nation {
+.red {
     background-color: #981b1e;
     color: white;
 }
 
-.nation.collapsible {
+.red.collapsible {
     background-color: #cd2026;
 }
 
