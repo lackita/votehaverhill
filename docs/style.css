@@ -64,6 +64,11 @@ nav li {
     background-color: #cd2026;
 }
 
+.green {
+    background-color: #2e8540;
+    color: white;
+}
+
 .active {
     border-bottom: 5px solid black;
 }
@@ -71,6 +76,10 @@ nav li {
 nav a {
     text-decoration: none;
     color: white;
+}
+
+footer {
+    text-align: center;
 }
 
 .content { width: 100% }

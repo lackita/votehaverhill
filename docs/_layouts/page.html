@@ -54,14 +54,20 @@ layout: null
 
   <body>
     <div class="section">
-      <nav>
-	<ul>
-	  <li class="{% if page.tab == "where" %}active {% endif %}blue"><a class="nav-link" href="/">Where Do I Vote?</a></li>
-	  <li class="{% if page.tab == "who" %}active {% endif %}red"><a class="nav-link" href="/who.html">Who's On My Ballot?</a></li>
-	</ul>
-      </nav>
+      <header>
+	<nav>
+	  <ul>
+	    <li class="{% if page.tab == "where" %}active {% endif %}blue"><a class="nav-link" href="/">Where Do I Vote?</a></li>
+	    <li class="{% if page.tab == "what" %}active {% endif %}red"><a class="nav-link" href="/what.html">What's On My Ballot?</a></li>
+	  </ul>
+	</nav>
+      </header>
 
       {{ content }}
+
+      <footer>
+	<a href="about.html">about votehaverhill</a>
+      </footer>
     </div>
   </body>
 </html>
